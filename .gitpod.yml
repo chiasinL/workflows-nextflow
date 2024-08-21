@@ -5,6 +5,7 @@ tasks:
     init: |
       sudo apt-get install -y ruby ruby-dev build-essential libxml2-dev
       sudo gem install bundler
+      conda install -y -c bioconda -c conda-forge salmon=1.5 fastqc=0.11 multiqc=1.10 nf-core
 
 
 vscode:
