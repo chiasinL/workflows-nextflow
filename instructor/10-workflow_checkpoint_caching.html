@@ -382,7 +382,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Workflow caching and checkpointing</h1>
-        <p>Last updated on 2024-07-22 |
+        <p>Last updated on 2024-08-21 |
 
         <a href="https://github.com/carpentries-incubator/workflows-nextflow/edit/main/episodes/10-workflow_checkpoint_caching.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -508,7 +508,15 @@ from the cache.</p>
 </div>
 </section><section><h2 class="section-heading" id="how-does-resume-work">How does resume work?<a class="anchor" aria-label="anchor" href="#how-does-resume-work"></a>
 <a class="anchor" aria-label="anchor" href="#how-does-resume-work"></a></h2>
-<hr class="half-width"><p>The mechanism works by assigning a unique ID to each task. This
+<hr class="half-width"><p>Nextflow stores all intermediate files and task results during the
+execution of a workflow is <code>work</code> directory. It acts as a
+scratch space where all the temporary data required for the workflow’s
+execution is kept. Within the work directory, Nextflow creates
+subdirectories named with unique hashes (e.g., work/ab/cd1234…). Each of
+these subdirectories corresponds to a specific process or task in the
+pipeline. The hashed directory names ensure that each task’s outputs are
+isolated and uniquely identified.</p>
+<p>The mechanism works by assigning a unique ID to each task. This
 unique ID is used to create a separate execution directory, within the
 <code>work</code> directory, where the tasks are executed and the
 results stored. A task’s unique ID is generated as a 128-bit hash number
@@ -876,8 +884,8 @@ have been successfully executed.</li>
   "url": "https://carpentries-incubator.github.io/workflows-nextflow/instructor/10-workflow_checkpoint_caching.html",
   "identifier": "https://carpentries-incubator.github.io/workflows-nextflow/instructor/10-workflow_checkpoint_caching.html",
   "dateCreated": "2021-02-01",
-  "dateModified": "2024-07-22",
-  "datePublished": "2024-08-20"
+  "dateModified": "2024-08-21",
+  "datePublished": "2024-08-21"
 }
 
   </script><script>
