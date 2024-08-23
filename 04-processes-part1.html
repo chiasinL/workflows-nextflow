@@ -584,7 +584,7 @@ process <code>COUNT_BASES</code> that runs the command.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">GROOVY<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1024,7 +1024,7 @@ terminal.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">GROOVY<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1511,7 +1511,7 @@ input.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">GROOVY<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1723,7 +1723,7 @@ combines two input channels</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb65">
 <h3 class="code-label">GROOVY<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1748,6 +1748,22 @@ combines two input channels</p>
 <span id="cb65-18"><a href="#cb65-18" tabindex="-1"></a>   <span class="fu">COMBINE</span><span class="op">(</span>transcriptome_ch<span class="op">,</span> chr_ch<span class="op">)</span></span>
 <span id="cb65-19"><a href="#cb65-19" tabindex="-1"></a> <span class="op">}</span></span></code></pre>
 </div>
+<div class="codewrapper sourceCode" id="cb66">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb66-1"><a href="#cb66-1" tabindex="-1"></a><span class="ex">$</span> nextflow run process_exercise_combine.nf <span class="at">-process.debug</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>N E X T F L O W   ~  version 24.04.4
+
+Launching `process_exercise_combine.nf` [fabulous_kare] DSL2 - revision: 1eade0a2e9
+
+executor &gt;  local (1)
+[e0/b05fe7] COMBINE (1) [100%] 1 of 1 ✔
+118</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1762,34 +1778,34 @@ process for each item in a list or a queue channel, every time new data
 is received.</p>
 <p>For example if we can fix the previous example by using the input
 qualifer <code>each</code> for the letters queue channel:</p>
-<div class="codewrapper sourceCode" id="cb66">
+<div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">GROOVY<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode groovy" tabindex="0"><code class="sourceCode groovy"><span id="cb66-1"><a href="#cb66-1" tabindex="-1"></a><span class="co">//process_repeat.nf</span></span>
-<span id="cb66-2"><a href="#cb66-2" tabindex="-1"></a></span>
-<span id="cb66-3"><a href="#cb66-3" tabindex="-1"></a></span>
-<span id="cb66-4"><a href="#cb66-4" tabindex="-1"></a>process COMBINE <span class="op">{</span></span>
-<span id="cb66-5"><a href="#cb66-5" tabindex="-1"></a>  input<span class="op">:</span></span>
-<span id="cb66-6"><a href="#cb66-6" tabindex="-1"></a>  val x</span>
-<span id="cb66-7"><a href="#cb66-7" tabindex="-1"></a>  each y</span>
-<span id="cb66-8"><a href="#cb66-8" tabindex="-1"></a></span>
-<span id="cb66-9"><a href="#cb66-9" tabindex="-1"></a>  script<span class="op">:</span></span>
-<span id="cb66-10"><a href="#cb66-10" tabindex="-1"></a>  <span class="st">"""</span></span>
-<span id="cb66-11"><a href="#cb66-11" tabindex="-1"></a><span class="st">  echo </span><span class="ss">$x</span><span class="st"> and </span><span class="ss">$y</span></span>
-<span id="cb66-12"><a href="#cb66-12" tabindex="-1"></a><span class="st">  """</span></span>
-<span id="cb66-13"><a href="#cb66-13" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb66-14"><a href="#cb66-14" tabindex="-1"></a></span>
-<span id="cb66-15"><a href="#cb66-15" tabindex="-1"></a>ch_num <span class="op">=</span> <span class="bu">Channel</span><span class="op">.</span><span class="fu">of</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">)</span></span>
-<span id="cb66-16"><a href="#cb66-16" tabindex="-1"></a>ch_letters <span class="op">=</span> <span class="bu">Channel</span><span class="op">.</span><span class="fu">of</span><span class="op">(</span><span class="st">'a'</span><span class="op">,</span> <span class="st">'b'</span><span class="op">,</span> <span class="st">'c'</span><span class="op">,</span> <span class="st">'d'</span><span class="op">)</span></span>
-<span id="cb66-17"><a href="#cb66-17" tabindex="-1"></a></span>
-<span id="cb66-18"><a href="#cb66-18" tabindex="-1"></a>workflow <span class="op">{</span></span>
-<span id="cb66-19"><a href="#cb66-19" tabindex="-1"></a>  <span class="fu">COMBINE</span><span class="op">(</span>ch_num<span class="op">,</span> ch_letters<span class="op">)</span></span>
-<span id="cb66-20"><a href="#cb66-20" tabindex="-1"></a><span class="op">}</span></span></code></pre>
+<pre class="sourceCode groovy" tabindex="0"><code class="sourceCode groovy"><span id="cb68-1"><a href="#cb68-1" tabindex="-1"></a><span class="co">//process_repeat.nf</span></span>
+<span id="cb68-2"><a href="#cb68-2" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="#cb68-3" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="#cb68-4" tabindex="-1"></a>process COMBINE <span class="op">{</span></span>
+<span id="cb68-5"><a href="#cb68-5" tabindex="-1"></a>  input<span class="op">:</span></span>
+<span id="cb68-6"><a href="#cb68-6" tabindex="-1"></a>  val x</span>
+<span id="cb68-7"><a href="#cb68-7" tabindex="-1"></a>  each y</span>
+<span id="cb68-8"><a href="#cb68-8" tabindex="-1"></a></span>
+<span id="cb68-9"><a href="#cb68-9" tabindex="-1"></a>  script<span class="op">:</span></span>
+<span id="cb68-10"><a href="#cb68-10" tabindex="-1"></a>  <span class="st">"""</span></span>
+<span id="cb68-11"><a href="#cb68-11" tabindex="-1"></a><span class="st">  echo </span><span class="ss">$x</span><span class="st"> and </span><span class="ss">$y</span></span>
+<span id="cb68-12"><a href="#cb68-12" tabindex="-1"></a><span class="st">  """</span></span>
+<span id="cb68-13"><a href="#cb68-13" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb68-14"><a href="#cb68-14" tabindex="-1"></a></span>
+<span id="cb68-15"><a href="#cb68-15" tabindex="-1"></a>ch_num <span class="op">=</span> <span class="bu">Channel</span><span class="op">.</span><span class="fu">of</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">)</span></span>
+<span id="cb68-16"><a href="#cb68-16" tabindex="-1"></a>ch_letters <span class="op">=</span> <span class="bu">Channel</span><span class="op">.</span><span class="fu">of</span><span class="op">(</span><span class="st">'a'</span><span class="op">,</span> <span class="st">'b'</span><span class="op">,</span> <span class="st">'c'</span><span class="op">,</span> <span class="st">'d'</span><span class="op">)</span></span>
+<span id="cb68-17"><a href="#cb68-17" tabindex="-1"></a></span>
+<span id="cb68-18"><a href="#cb68-18" tabindex="-1"></a>workflow <span class="op">{</span></span>
+<span id="cb68-19"><a href="#cb68-19" tabindex="-1"></a>  <span class="fu">COMBINE</span><span class="op">(</span>ch_num<span class="op">,</span> ch_letters<span class="op">)</span></span>
+<span id="cb68-20"><a href="#cb68-20" tabindex="-1"></a><span class="op">}</span></span></code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb67">
+<div class="codewrapper sourceCode" id="cb69">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a><span class="ex">$</span> nextflow run process_repeat.nf <span class="at">-process.debug</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a><span class="ex">$</span> nextflow run process_repeat.nf <span class="at">-process.debug</span></span></code></pre>
 </div>
 <p>The process will run eight times.</p>
 <div class="codewrapper">
@@ -1815,29 +1831,29 @@ qualifer <code>each</code> for the letters queue channel:</p>
 <p>Extend the script <code>process_exercise_repeat.nf</code> by adding
 more values to the <code>chr</code> queue channel e.g. A to P and
 running the process for each value.</p>
-<div class="codewrapper sourceCode" id="cb69">
+<div class="codewrapper sourceCode" id="cb71">
 <h3 class="code-label">GROOVY<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode groovy" tabindex="0"><code class="sourceCode groovy"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a><span class="co">//process_exercise_repeat.nf</span></span>
-<span id="cb69-2"><a href="#cb69-2" tabindex="-1"></a></span>
-<span id="cb69-3"><a href="#cb69-3" tabindex="-1"></a>process COMBINE <span class="op">{</span></span>
-<span id="cb69-4"><a href="#cb69-4" tabindex="-1"></a>    input<span class="op">:</span></span>
-<span id="cb69-5"><a href="#cb69-5" tabindex="-1"></a>    path transcriptome</span>
-<span id="cb69-6"><a href="#cb69-6" tabindex="-1"></a>    val chr</span>
-<span id="cb69-7"><a href="#cb69-7" tabindex="-1"></a>   </span>
-<span id="cb69-8"><a href="#cb69-8" tabindex="-1"></a>    script<span class="op">:</span></span>
-<span id="cb69-9"><a href="#cb69-9" tabindex="-1"></a>    <span class="st">"""</span></span>
-<span id="cb69-10"><a href="#cb69-10" tabindex="-1"></a><span class="st">     printf "Number of sequences for chromosome </span><span class="ss">$chr</span><span class="st">: "</span></span>
-<span id="cb69-11"><a href="#cb69-11" tabindex="-1"></a><span class="st">    zgrep -c "^&gt;Y</span><span class="ss">${</span>chr<span class="ss">}</span><span class="st">" </span><span class="ss">${</span>transcriptome<span class="ss">}</span></span>
-<span id="cb69-12"><a href="#cb69-12" tabindex="-1"></a><span class="st">    """</span></span>
-<span id="cb69-13"><a href="#cb69-13" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb69-14"><a href="#cb69-14" tabindex="-1"></a></span>
-<span id="cb69-15"><a href="#cb69-15" tabindex="-1"></a>transcriptome_ch <span class="op">=</span> channel<span class="op">.</span><span class="fu">fromPath</span><span class="op">(</span><span class="st">'data/yeast/transcriptome/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz'</span><span class="op">,</span> checkIfExists<span class="op">:</span> <span class="kw">true</span><span class="op">)</span></span>
-<span id="cb69-16"><a href="#cb69-16" tabindex="-1"></a>chr_ch <span class="op">=</span> channel<span class="op">.</span><span class="fu">of</span><span class="op">(</span><span class="st">'A'</span><span class="op">)</span></span>
-<span id="cb69-17"><a href="#cb69-17" tabindex="-1"></a></span>
-<span id="cb69-18"><a href="#cb69-18" tabindex="-1"></a>workflow <span class="op">{</span></span>
-<span id="cb69-19"><a href="#cb69-19" tabindex="-1"></a>  <span class="fu">COMBINE</span><span class="op">(</span>transcriptome_ch<span class="op">,</span> chr_ch<span class="op">)</span></span>
-<span id="cb69-20"><a href="#cb69-20" tabindex="-1"></a><span class="op">}</span></span></code></pre>
+<pre class="sourceCode groovy" tabindex="0"><code class="sourceCode groovy"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="co">//process_exercise_repeat.nf</span></span>
+<span id="cb71-2"><a href="#cb71-2" tabindex="-1"></a></span>
+<span id="cb71-3"><a href="#cb71-3" tabindex="-1"></a>process COMBINE <span class="op">{</span></span>
+<span id="cb71-4"><a href="#cb71-4" tabindex="-1"></a>    input<span class="op">:</span></span>
+<span id="cb71-5"><a href="#cb71-5" tabindex="-1"></a>    path transcriptome</span>
+<span id="cb71-6"><a href="#cb71-6" tabindex="-1"></a>    val chr</span>
+<span id="cb71-7"><a href="#cb71-7" tabindex="-1"></a>   </span>
+<span id="cb71-8"><a href="#cb71-8" tabindex="-1"></a>    script<span class="op">:</span></span>
+<span id="cb71-9"><a href="#cb71-9" tabindex="-1"></a>    <span class="st">"""</span></span>
+<span id="cb71-10"><a href="#cb71-10" tabindex="-1"></a><span class="st">     printf "Number of sequences for chromosome </span><span class="ss">$chr</span><span class="st">: "</span></span>
+<span id="cb71-11"><a href="#cb71-11" tabindex="-1"></a><span class="st">    zgrep -c "^&gt;Y</span><span class="ss">${</span>chr<span class="ss">}</span><span class="st">" </span><span class="ss">${</span>transcriptome<span class="ss">}</span></span>
+<span id="cb71-12"><a href="#cb71-12" tabindex="-1"></a><span class="st">    """</span></span>
+<span id="cb71-13"><a href="#cb71-13" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb71-14"><a href="#cb71-14" tabindex="-1"></a></span>
+<span id="cb71-15"><a href="#cb71-15" tabindex="-1"></a>transcriptome_ch <span class="op">=</span> channel<span class="op">.</span><span class="fu">fromPath</span><span class="op">(</span><span class="st">'data/yeast/transcriptome/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz'</span><span class="op">,</span> checkIfExists<span class="op">:</span> <span class="kw">true</span><span class="op">)</span></span>
+<span id="cb71-16"><a href="#cb71-16" tabindex="-1"></a>chr_ch <span class="op">=</span> channel<span class="op">.</span><span class="fu">of</span><span class="op">(</span><span class="st">'A'</span><span class="op">)</span></span>
+<span id="cb71-17"><a href="#cb71-17" tabindex="-1"></a></span>
+<span id="cb71-18"><a href="#cb71-18" tabindex="-1"></a>workflow <span class="op">{</span></span>
+<span id="cb71-19"><a href="#cb71-19" tabindex="-1"></a>  <span class="fu">COMBINE</span><span class="op">(</span>transcriptome_ch<span class="op">,</span> chr_ch<span class="op">)</span></span>
+<span id="cb71-20"><a href="#cb71-20" tabindex="-1"></a><span class="op">}</span></span></code></pre>
 </div>
 <p>How many times does this process run?</p>
 </div>
@@ -1848,38 +1864,38 @@ running the process for each value.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb70">
+<div class="codewrapper sourceCode" id="cb72">
 <h3 class="code-label">GROOVY<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode groovy" tabindex="0"><code class="sourceCode groovy"><span id="cb70-1"><a href="#cb70-1" tabindex="-1"></a> <span class="co">//process_exercise_repeat_answer.nf</span></span>
-<span id="cb70-2"><a href="#cb70-2" tabindex="-1"></a> </span>
-<span id="cb70-3"><a href="#cb70-3" tabindex="-1"></a></span>
-<span id="cb70-4"><a href="#cb70-4" tabindex="-1"></a> process COMBINE <span class="op">{</span></span>
-<span id="cb70-5"><a href="#cb70-5" tabindex="-1"></a>   input<span class="op">:</span></span>
-<span id="cb70-6"><a href="#cb70-6" tabindex="-1"></a>   path transcriptome</span>
-<span id="cb70-7"><a href="#cb70-7" tabindex="-1"></a>   each chr</span>
-<span id="cb70-8"><a href="#cb70-8" tabindex="-1"></a>  </span>
-<span id="cb70-9"><a href="#cb70-9" tabindex="-1"></a>   script<span class="op">:</span></span>
-<span id="cb70-10"><a href="#cb70-10" tabindex="-1"></a>   <span class="st">"""</span></span>
-<span id="cb70-11"><a href="#cb70-11" tabindex="-1"></a><span class="st">   printf "Number of sequences for chromosome </span><span class="ss">$chr</span><span class="st">: "</span></span>
-<span id="cb70-12"><a href="#cb70-12" tabindex="-1"></a><span class="st">   zgrep -c "^&gt;Y</span><span class="ss">${</span>chr<span class="ss">}</span><span class="st">" </span><span class="ss">${</span>transcriptome<span class="ss">}</span></span>
-<span id="cb70-13"><a href="#cb70-13" tabindex="-1"></a><span class="st">   """</span></span>
-<span id="cb70-14"><a href="#cb70-14" tabindex="-1"></a> <span class="op">}</span></span>
-<span id="cb70-15"><a href="#cb70-15" tabindex="-1"></a></span>
-<span id="cb70-16"><a href="#cb70-16" tabindex="-1"></a> transcriptome_ch <span class="op">=</span> channel<span class="op">.</span><span class="fu">fromPath</span><span class="op">(</span><span class="st">'data/yeast/transcriptome/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz'</span><span class="op">,</span> checkIfExists<span class="op">:</span> <span class="kw">true</span><span class="op">)</span></span>
-<span id="cb70-17"><a href="#cb70-17" tabindex="-1"></a> chr_ch <span class="op">=</span> channel<span class="op">.</span><span class="fu">of</span><span class="op">(</span><span class="st">'A'</span><span class="op">..</span><span class="st">'P'</span><span class="op">)</span></span>
-<span id="cb70-18"><a href="#cb70-18" tabindex="-1"></a></span>
-<span id="cb70-19"><a href="#cb70-19" tabindex="-1"></a> workflow <span class="op">{</span></span>
-<span id="cb70-20"><a href="#cb70-20" tabindex="-1"></a>   <span class="fu">COMBINE</span><span class="op">(</span>transcriptome_ch<span class="op">,</span> chr_ch<span class="op">)</span></span>
-<span id="cb70-21"><a href="#cb70-21" tabindex="-1"></a> <span class="op">}</span></span></code></pre>
+<pre class="sourceCode groovy" tabindex="0"><code class="sourceCode groovy"><span id="cb72-1"><a href="#cb72-1" tabindex="-1"></a> <span class="co">//process_exercise_repeat_answer.nf</span></span>
+<span id="cb72-2"><a href="#cb72-2" tabindex="-1"></a> </span>
+<span id="cb72-3"><a href="#cb72-3" tabindex="-1"></a></span>
+<span id="cb72-4"><a href="#cb72-4" tabindex="-1"></a> process COMBINE <span class="op">{</span></span>
+<span id="cb72-5"><a href="#cb72-5" tabindex="-1"></a>   input<span class="op">:</span></span>
+<span id="cb72-6"><a href="#cb72-6" tabindex="-1"></a>   path transcriptome</span>
+<span id="cb72-7"><a href="#cb72-7" tabindex="-1"></a>   each chr</span>
+<span id="cb72-8"><a href="#cb72-8" tabindex="-1"></a>  </span>
+<span id="cb72-9"><a href="#cb72-9" tabindex="-1"></a>   script<span class="op">:</span></span>
+<span id="cb72-10"><a href="#cb72-10" tabindex="-1"></a>   <span class="st">"""</span></span>
+<span id="cb72-11"><a href="#cb72-11" tabindex="-1"></a><span class="st">   printf "Number of sequences for chromosome </span><span class="ss">$chr</span><span class="st">: "</span></span>
+<span id="cb72-12"><a href="#cb72-12" tabindex="-1"></a><span class="st">   zgrep -c "^&gt;Y</span><span class="ss">${</span>chr<span class="ss">}</span><span class="st">" </span><span class="ss">${</span>transcriptome<span class="ss">}</span></span>
+<span id="cb72-13"><a href="#cb72-13" tabindex="-1"></a><span class="st">   """</span></span>
+<span id="cb72-14"><a href="#cb72-14" tabindex="-1"></a> <span class="op">}</span></span>
+<span id="cb72-15"><a href="#cb72-15" tabindex="-1"></a></span>
+<span id="cb72-16"><a href="#cb72-16" tabindex="-1"></a> transcriptome_ch <span class="op">=</span> channel<span class="op">.</span><span class="fu">fromPath</span><span class="op">(</span><span class="st">'data/yeast/transcriptome/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz'</span><span class="op">,</span> checkIfExists<span class="op">:</span> <span class="kw">true</span><span class="op">)</span></span>
+<span id="cb72-17"><a href="#cb72-17" tabindex="-1"></a> chr_ch <span class="op">=</span> channel<span class="op">.</span><span class="fu">of</span><span class="op">(</span><span class="st">'A'</span><span class="op">..</span><span class="st">'P'</span><span class="op">)</span></span>
+<span id="cb72-18"><a href="#cb72-18" tabindex="-1"></a></span>
+<span id="cb72-19"><a href="#cb72-19" tabindex="-1"></a> workflow <span class="op">{</span></span>
+<span id="cb72-20"><a href="#cb72-20" tabindex="-1"></a>   <span class="fu">COMBINE</span><span class="op">(</span>transcriptome_ch<span class="op">,</span> chr_ch<span class="op">)</span></span>
+<span id="cb72-21"><a href="#cb72-21" tabindex="-1"></a> <span class="op">}</span></span></code></pre>
 </div>
 <p>Then run the script.</p>
-<div class="codewrapper sourceCode" id="cb71">
+<div class="codewrapper sourceCode" id="cb73">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="ex">$</span> nextflow run process_exercise_repeat.nf <span class="at">-process.debug</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a><span class="ex">$</span> nextflow run process_exercise_repeat.nf <span class="at">-process.debug</span></span></code></pre>
 </div>
 <p>This process runs 16 times.</p>
 </div>
